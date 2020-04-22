@@ -5,8 +5,9 @@
     %Mapping towns 
     %Filling map circles with minority averages
 %% Inital Steps - Filtering Files Over to Matlab
-filename= 'Dem_lat:lon.csv';
-demlatlon = readtable(filename);
+% filename= 'Dem_lat:lon.csv';
+% demlatlon = readtable(filename);
+load Demlatlon.mat
     %for some reason ^^^ that doesn't work --> but if you import the data
     %directly it works and creates its own variable - confusing?
 
