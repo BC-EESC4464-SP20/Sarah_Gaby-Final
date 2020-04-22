@@ -8,9 +8,9 @@ ID= unique(str2double(pm.SiteID));
 pm_new= [total_ID,total_pm]
 
 %%
-for i=1:26
+for i=1:length(ID)
     location_site=find(pm_new==ID(i));
-    %pm_specific= location_site(pm_new(i))
+    pm_specific= pm_new(location_site)
 end 
 %y=splitapply(mean, pm.DailyMeanPM2_5Concentration, pm.SiteID)
 %from list of ids, find averages from a different list in corresponding
