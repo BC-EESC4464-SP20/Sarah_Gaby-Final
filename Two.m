@@ -23,8 +23,9 @@ n_a= str2double(population.P0050008(2:78));
 bi= str2double(population.P0050009(2:78));
 pac = str2double(population.P0050007(2:78));
 asian= str2double(population.P0050005(2:78));
-minority = total_pop - white - n_a - bi - pac - asian
-
+black = str2double(population.P0050004(2:78));
+hispanic = str2double(population.P0050010(2:78));
+minority =  black 
 
 minority_rate = minority./total_pop;
 minority_percent = (minority_rate)*100
@@ -57,11 +58,11 @@ figure (2)
 ax = usamap(latlim, lonlim);
 setm(ax, 'FFaceColor', oceanColor)
 geoshow(states)
-%cmocean(flipud(gray),50)
+%cmocean('algae')
 intensity = 64
 newColormap = colormap(flipud(colormap('gray')))
 newColormap = newColormap(1:intensity,:)
 colormap(newColormap)
-%colormap(flipud(colormap('gray')));
+colormap(flipud(colormap('gray')));
 scatterm(demlat, demlon, 100, minority_percent, 'filled')
 
