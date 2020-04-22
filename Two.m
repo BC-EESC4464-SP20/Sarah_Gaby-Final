@@ -51,5 +51,3 @@ geoshow(placenames)
 cmocean('gray')
 scatterm(demlat, demlon, 100, minority_percent, 'filled')
 
-%% Next Steps
-
