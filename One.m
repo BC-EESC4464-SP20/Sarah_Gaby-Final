@@ -33,20 +33,23 @@ anom_site=total_avg-avg_site
 latlim = [min(lat) max(lat)];
 lonlim = [min(lon) max(lon)];
 [latlim, lonlim] = bufgeoquad(latlim, lonlim, .05, .05);
+states = geoshape(shaperead('usastatehi', 'UseGeoCoords', true));
+oceanColor = [.5 .7 .9];
 %%
 % Locations of Demographic Data (77) 
-figure (3)
+figure (1)
 ax = usamap(latlim, lonlim);
 setm(ax, 'FFaceColor', oceanColor)
 geoshow(states)
-geoshow(placenames)
-plotm(latlon,'m.','markersize',15) % 77 locations of where we have data for demographics
+plotm(lat,lon,'m.','markersize',15) 
 %%
-% Percent of Population that is a Minority at Each of Locations
+%avg
 figure (2)
 ax = usamap(latlim, lonlim);
 setm(ax, 'FFaceColor', oceanColor)
 geoshow(states)
-geoshow(placenames)
-cmocean('gray')
-scatterm(lat, lon, 100, minority_percent, 'filled')
+intensity = 64
+newColormap = colormap(flipud(colormap('gray')))
+newColormap = newColormap(1:intensity,:)
+colormap(newColormap)
+scatterm(lat, lon, 200, avg_site, 'filled')
