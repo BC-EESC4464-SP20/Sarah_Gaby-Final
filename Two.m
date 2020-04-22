@@ -20,8 +20,8 @@ total_pop = str2double(population.P0050001(2:78));
 white =  str2double(population.P0050003(2:78));
 minority = total_pop - white;
 
-minority_averages = minority./total_pop;
-minority_percent = (minority./total_pop)*100
+minority_rate = minority./total_pop;
+minority_percent = (minority_rate)*100
 
 %% Pulling over the Latitude and Longitude
 
@@ -30,6 +30,11 @@ demlat = table2array(Demlatlon(:,3));
 
 %% Creating Maps of Chicago
     %maybe put a marker at downtown Chicago for point of reference
+    
+% Other
+states = geoshape(shaperead('usastatehi', 'UseGeoCoords', true));
+oceanColor = [.5 .7 .9];
+
 latlim = [min(demlat) max(demlat)];
 lonlim = [min(demlon) max(demlon)];
 [latlim, lonlim] = bufgeoquad(latlim, lonlim, .05, .05);
@@ -39,7 +44,6 @@ figure (1)
 ax = usamap(latlim, lonlim);
 setm(ax, 'FFaceColor', oceanColor)
 geoshow(states)
-geoshow(placenames)
 plotm(demlat,demlon,'m.','markersize',15) % 77 locations of where we have data for demographics
 
 % Percent of Population that is a Minority at Each of Locations
@@ -47,7 +51,11 @@ figure (2)
 ax = usamap(latlim, lonlim);
 setm(ax, 'FFaceColor', oceanColor)
 geoshow(states)
-geoshow(placenames)
-cmocean('gray')
+%cmocean(flipud(gray),50)
+intensity = 64
+newColormap = colormap(flipud(colormap('gray')))
+newColormap = newColormap(1:intensity,:)
+colormap(newColormap)
+%colormap(flipud(colormap('gray')));
 scatterm(demlat, demlon, 100, minority_percent, 'filled')
 
