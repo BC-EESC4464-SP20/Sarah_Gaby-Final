@@ -18,7 +18,12 @@ population = readtable(filename2);
 
 total_pop = str2double(population.P0050001(2:78));
 white =  str2double(population.P0050003(2:78));
-minority = total_pop - white;
+n_a= str2double(population.P0050008(2:78));
+bi= str2double(population.P0050009(2:78));
+pac = str2double(population.P0050007(2:78));
+asian= str2double(population.P0050005(2:78));
+minority = total_pop - white - n_a - bi - pac - asian
+
 
 minority_rate = minority./total_pop;
 minority_percent = (minority_rate)*100

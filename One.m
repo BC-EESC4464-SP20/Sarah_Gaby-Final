@@ -52,4 +52,4 @@ intensity = 64
 newColormap = colormap(flipud(colormap('gray')))
 newColormap = newColormap(1:intensity,:)
 colormap(newColormap)
-scatterm(lat, lon, 200, avg_site, 'filled')
+scatterm(lat, lon, 150, avg_site, 'filled')
