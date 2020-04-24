@@ -42,13 +42,6 @@ latlim_2 = [min(demlat) max(demlat)];
 lonlim_2 = [min(demlon) max(demlon)];
 [latlim_2, lonlim_2] = bufgeoquad(latlim_2, lonlim_2, .05, .05);
 
-% Locations of Demographic Data (77) 
-figure (1)
-ax_2 = usamap(latlim_2, lonlim_2);
-setm(ax_2, 'FFaceColor', oceanColor)
-geoshow(states)
-plotm(demlat,demlon,'m.','markersize',15) % 77 locations of where we have data for demographics
-%%
 % Percent of Population that is a Minority at Each of Locations
 figure (2)
 ax_2 = usamap(latlim_2, lonlim_2);
@@ -63,3 +56,4 @@ colormap(newColormap)
 scatterm(demlat, demlon, 150, minority_percent, 'filled')
 plotm(41.8757,-87.6243,'k*') 
 textm(41.8757,-87.61,'Downtown') 
+title('Percentage of Black Residents (%) by Neighborhood in the Greater Chicago Region')

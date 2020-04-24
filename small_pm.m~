@@ -8,13 +8,19 @@ ID= unique(str2double(pm.SiteID));
 pm_new= [total_ID,total_pm,total_site_lat,total_site_lon]
 lat=unique(total_site_lat,'stable')
 lon=unique(total_site_lon,'stable')
-map_details= [ID, lat, lon]
-
+%%
 %% avg
 for i=1:length(ID)
     location_site=find(pm_new==ID(i));
     avg_site(i,1)=mean(total_pm(location_site)); 
 end
+cut_lat=42.1
+cut_lon=-87.45
+cut_lon_extra=-87.9
+small=find((lat<=cut_lat)&(lon<=cut_lon)&(lon>=cut_lon_extra))
+small_lat=lat(small)
+small_lon=lon(small)
+small_pm= avg_site(small)
 %% min
 for i=1:length(ID)
     location_site=find(pm_new==ID(i));
@@ -34,15 +40,17 @@ lonlim = [min(lon) max(lon)];
 [latlim, lonlim] = bufgeoquad(latlim, lonlim, .05, .05);
 states = geoshape(shaperead('usastatehi', 'UseGeoCoords', true));
 oceanColor = [.5 .7 .9];
-% Locations of PM2.5 Data 
-figure (2)
+%%
+%Locations of PM2.5 Data 
+
 ax = usamap(latlim, lonlim);
 setm(ax, 'FFaceColor', oceanColor)
 geoshow(states)
 cmocean('amp')
 colormap
-scatterm(lat, lon, 150, avg_site, 'filled')
+scatterm(small_lat, small_lon, 150, small_pm, 'filled')
 %text(41.8757, -87.6243, '(Downtown)');
 plotm(41.8757,-87.6243,'k*') 
 textm(41.8757,-87.61,'Downtown') 
-title('Average Daily PM2.5 Concentration (ug/m3 LC) in the Greater Chicago Region')
+title('PM2.5 Sites Within the Demogrpahic Parameter')
+

@@ -45,4 +45,5 @@ scatterm(lat, lon, 150, avg_site, 'filled')
 %text(41.8757, -87.6243, '(Downtown)');
 plotm(41.8757,-87.6243,'k*') 
 textm(41.8757,-87.61,'Downtown') 
-title('Average Daily PM2.5 Concentration (ug/m3 LC) in the Greater Chicago Region')
+title('
+
