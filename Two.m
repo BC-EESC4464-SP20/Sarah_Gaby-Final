@@ -1,5 +1,5 @@
 %Steps before running
-    % Add Common Functions to Path, Import Demlatlon data
+    % Add Common Functions to Path
 %% To- Do List
     %Getting minority averages for each town
     %Mapping towns 
@@ -52,7 +52,7 @@ ax = usamap(latlim, lonlim);
 setm(ax, 'FFaceColor', oceanColor)
 geoshow(states)
 plotm(demlat,demlon,'m.','markersize',15) % 77 locations of where we have data for demographics
-
+%%
 % Percent of Population that is a Minority at Each of Locations
 figure (2)
 ax = usamap(latlim, lonlim);
@@ -65,4 +65,5 @@ newColormap = newColormap(1:intensity,:)
 colormap(newColormap)
 colormap(flipud(colormap('gray')));
 scatterm(demlat, demlon, 100, minority_percent, 'filled')
-
+%textm(41.8781, -87.6298, 'Downtown');
+%geoplot(41.8781, -87.6298, 'g*')
