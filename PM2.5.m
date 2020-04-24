@@ -29,27 +29,28 @@ end
 total_avg= mean(avg_site)
 anom_site=total_avg-avg_site
 %%
-%maybe put a marker at downtown Chicago for point of reference
 latlim = [min(lat) max(lat)];
 lonlim = [min(lon) max(lon)];
 [latlim, lonlim] = bufgeoquad(latlim, lonlim, .05, .05);
 states = geoshape(shaperead('usastatehi', 'UseGeoCoords', true));
 oceanColor = [.5 .7 .9];
 %%
-% Locations of Demographic Data (77) 
+% Locations of PM2.5 Data (77) 
 figure (1)
-ax = usamap(latlim, lonlim);
-setm(ax, 'FFaceColor', oceanColor)
+ax_1 = usamap(latlim, lonlim);
+setm(ax_1, 'FFaceColor', oceanColor)
 geoshow(states)
 plotm(lat,lon,'m.','markersize',15) 
 %%
 %avg
 figure (2)
-ax = usamap(latlim, lonlim);
-setm(ax, 'FFaceColor', oceanColor)
+ax_1 = usamap(latlim, lonlim);
+setm(ax_1, 'FFaceColor', oceanColor)
 geoshow(states)
-intensity = 64
-newColormap = colormap(flipud(colormap('gray')))
-newColormap = newColormap(1:intensity,:)
-colormap(newColormap)
-scatterm(lat, lon, 150, avg_site, 'filled')
+cmocean('amp')
+colormap
+scatterm(lat, lon, 200, avg_site, 'filled')
+%text(41.8757, -87.6243, '(Downtown)');
+plotm(41.8757,-87.6243,'k*') 
+textm(41.8757,-87.61,'Downtown') 
+
