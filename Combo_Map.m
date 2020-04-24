@@ -3,14 +3,14 @@ demlat = table2array(Demlatlon(:,3));
 lat=unique(total_site_lat,'stable')
 lon=unique(total_site_lon,'stable')
 %%
-latlim = [min(lat) max(lat)];
-lonlim = [min(lon) max(lon)];
-[latlim, lonlim] = bufgeoquad(latlim, lonlim, .05, .05);
+latlim_2 = [min(demlat) max(demlat)];
+lonlim_2 = [min(demlon) max(demlon)];
+[latlim_2, lonlim_2] = bufgeoquad(latlim_2, lonlim_2, .05, .05);
 states = geoshape(shaperead('usastatehi', 'UseGeoCoords', true));
 oceanColor = [.5 .7 .9];
 %%
-ax = usamap(latlim, lonlim);
-setm(ax, 'FFaceColor', oceanColor)
+ax_2 = usamap(latlim_2, lonlim_2);
+setm(ax_2, 'FFaceColor', oceanColor)
 geoshow(states)
 plotm(41.8757,-87.6243,'k*') 
 textm(41.8757,-87.61,'Downtown') 

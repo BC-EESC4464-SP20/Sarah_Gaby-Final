@@ -29,27 +29,27 @@ end
 total_avg= mean(avg_site)
 anom_site=total_avg-avg_site
 %%
-latlim = [min(lat) max(lat)];
-lonlim = [min(lon) max(lon)];
-[latlim, lonlim] = bufgeoquad(latlim, lonlim, .05, .05);
+latlim_2 = [min(demlat) max(demlat)];
+lonlim_2 = [min(demlon) max(demlon)];
+[latlim_2, lonlim_2] = bufgeoquad(latlim_2, lonlim_2, .05, .05);
 states = geoshape(shaperead('usastatehi', 'UseGeoCoords', true));
 oceanColor = [.5 .7 .9];
 %%
-% Locations of PM2.5 Data (77) 
+% Locations of PM2.5 Data 
 figure (1)
-ax_1 = usamap(latlim, lonlim);
-setm(ax_1, 'FFaceColor', oceanColor)
+ax_2 = usamap(latlim_2, lonlim_2);
+setm(ax_2, 'FFaceColor', oceanColor)
 geoshow(states)
 plotm(lat,lon,'m.','markersize',15) 
 %%
 %avg
 figure (2)
-ax_1 = usamap(latlim, lonlim);
-setm(ax_1, 'FFaceColor', oceanColor)
+ax_2 = usamap(latlim_2, lonlim_2);
+setm(ax_2, 'FFaceColor', oceanColor)
 geoshow(states)
 cmocean('amp')
 colormap
-scatterm(lat, lon, 200, avg_site, 'filled')
+scatterm(lat, lon, 150, avg_site, 'filled')
 %text(41.8757, -87.6243, '(Downtown)');
 plotm(41.8757,-87.6243,'k*') 
 textm(41.8757,-87.61,'Downtown') 
