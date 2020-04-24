@@ -1,14 +1,14 @@
 filename= 'ad_viz_plotval_data.csv';
 pm = readtable(filename);
-total_pm= str2double(pm.DailyMeanPM2_5Concentration)
-total_ID= str2double(pm.SiteID)
+total_pm= str2double(pm.DailyMeanPM2_5Concentration);
+total_ID= str2double(pm.SiteID);
 total_site_lat=str2double(pm.SITE_LATITUDE);
 total_site_lon=str2double(pm.SITE_LONGITUDE);
 ID= unique(str2double(pm.SiteID));
-pm_new= [total_ID,total_pm,total_site_lat,total_site_lon]
-lat=unique(total_site_lat,'stable')
-lon=unique(total_site_lon,'stable')
-map_details= [ID, lat, lon]
+pm_new= [total_ID,total_pm,total_site_lat,total_site_lon];
+lat=unique(total_site_lat,'stable');
+lon=unique(total_site_lon,'stable');
+map_details= [ID, lat, lon];
 
 %% avg
 for i=1:length(ID)
@@ -26,8 +26,8 @@ for i=1:length(ID)
     max_site(i,1)=max(total_pm(location_site)); 
 end
 %% anom
-total_avg= mean(avg_site)
-anom_site=total_avg-avg_site
+total_avg= mean(avg_site);
+anom_site=total_avg-avg_site;
 %%
 latlim_2 = [min(demlat) max(demlat)];
 lonlim_2 = [min(demlon) max(demlon)];
