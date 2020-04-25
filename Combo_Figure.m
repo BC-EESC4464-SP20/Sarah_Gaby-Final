@@ -14,7 +14,7 @@ ylabel('Average Daily PM2.5 Concentration (ug/m3 LC)')
 h=lsline
 set(h,'color', 'r')
 title('Correlation Between the Percentage of Black Residents and PM2.5 Pollution') 
-%%
+%% Past Work 
 % dist = sqrt((small_lat-demlat').^2 + (small_lon-demlon').^2);
 % %locations of pm2.5 closest to demo data
 % dist(dist == 0) = Inf;
