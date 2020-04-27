@@ -35,3 +35,10 @@ title('Correlation Between the Percentage of Black Residents and PM2.5 Pollution
 % xlabel('Percentage of Black Residents')
 % ylabel('Average Daily PM2.5 Concentration')
 % lsline
+%% 
+for i= 1:12
+dist_total = sqrt((demlat(close_arrays)-small_lat(i)').^2 + (demlon(close_arrays)-small_lon(i)').^2);
+end 
+dist_mean=mean(dist_total)
+dist_min=min(dist_total)
+dist_max=max(dist_total)
