@@ -35,3 +35,20 @@ title('Correlation Between the Percentage of Black Residents and PM2.5 Pollution
 % xlabel('Percentage of Black Residents')
 % ylabel('Average Daily PM2.5 Concentration')
 % lsline
+%% Visualizing the sites we used
+latlim_2 = [min(demlat) max(demlat)];
+lonlim_2 = [min(demlon) max(demlon)];
+[latlim_2, lonlim_2] = bufgeoquad(latlim_2, lonlim_2, .05, .05);
+figure (1)
+ax_2 = usamap(latlim_2, lonlim_2);
+setm(ax_2, 'FFaceColor', oceanColor)
+geoshow(states)
+intensity = 64
+newColormap = colormap(flipud(colormap('gray')))
+newColormap = newColormap(1:intensity,:)
+colormap(newColormap)
+scatterm(demlat, demlon, 150, minority_percent, 'filled')
+plotm(41.8757,-87.6243,'k*') 
+textm(41.8757,-87.61,'Downtown') 
+title('Neighborhoods Connected to Closest PM2.5 Sites')
+circlem(demlat(close_arrays), 
