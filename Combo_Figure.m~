@@ -36,4 +36,17 @@ title('Correlation Between the Percentage of Black Residents and PM2.5 Pollution
 % ylabel('Average Daily PM2.5 Concentration')
 % lsline
 %% 
-dist = sqrt((demlat(close_arrays)-small_lat').^2 + (demlon-small_lon').^2);
+for i= 1:12
+dist_total = sqrt((demlat(close_arrays)-small_lat(i)').^2 + (demlon(close_arrays)-small_lon(i)').^2);
+end 
+dist_mean=mean(dist_total)
+dist_min=min(dist_total)
+dist_max=max(dist_total)
+lat_lon=.1
+km=6
+km_dist_min=dist_min/lat_lon/km
+km_dist_min_b=dist_min/lat_lon/km
+km_dist_max=dist_max/lat_lon/km
+km_dist_max_b=dist_max/lat_lon/km
+km_dist_avg=dist_max/lat_lon/km
+km_dist_avg_b=dist_m/lat_lon/km

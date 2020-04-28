@@ -42,3 +42,10 @@ end
 dist_mean=mean(dist_total)
 dist_min=min(dist_total)
 dist_max=max(dist_total)
+lat_lon=.1
+km=6
+km_dist_min=dist_min/lat_lon/km
+
+km_dist_max=dist_max/lat_lon/km
+
+km_dist_avg=dist_mean/lat_lon/km
