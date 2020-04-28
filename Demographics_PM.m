@@ -47,6 +47,8 @@ scatterm(demlat, demlon, 150, minority_percent, 'filled')
 plotm(41.8757,-87.6243,'k*') 
 textm(41.8757,-87.61,'Downtown') 
 title('Percentage of Black Residents (%) by Neighborhood in the Greater Chicago Region')
+%title('Outline of the Demographic Sites Used')
+%plotm(close_lat, close_lon, 'ro');
 %% PM2.5
 %Loading Data
 filename= 'ad_viz_plotval_data.csv';
